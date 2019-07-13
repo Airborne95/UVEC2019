@@ -4,13 +4,18 @@ import datetime
 import os
 from flask import Flask, jsonify, make_response, request, render_template, url_for,redirect
 from flask import send_from_directory
+'''
 
+ # reference https://flask.palletsprojects.com/en/1.0.x/patterns/fileuploads/
+
+
+'''
 import db
 
-app = Flask(__name__)
-authorized_tokens = {}
-app.config['UPLOAD_FOLDER'] = '/Users/Asim/Downloads'
 
+app = Flask(__name__)
+
+app.config['UPLOAD_FOLDER'] = '/Users/Asim/Downloads'
 
 @app.route('/')
 def mainPage():
@@ -33,8 +38,6 @@ def upload_file():
 def view_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
-
-
 
 
 if __name__ == '__main__':
